@@ -46,7 +46,7 @@
                 <div class="card-header bg-primary text-white"><b><span class="fas fa-lock"></span> Login</b></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="{{ route('login') }}" id="myForm">
                         @csrf
 
                         <div class="form-group row">
@@ -92,7 +92,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary btn-lg">
+                                <button type="submit" class="btn btn-primary btn-lg" id="prev">
                                     <b>Login</b>
                                 </button>
 
@@ -104,4 +104,21 @@
         </div>
     </div>
 </div>
+@endsection
+
+
+@section('scripts')
+
+<script>
+    window.onload = function () {
+        const prev = document.querySelector('#prev');
+        const myForm = document.querySelector('#myForm');
+
+        myForm.onsubmit = function () {
+            prev.style.display = 'none';
+        }
+
+    }
+</script>
+
 @endsection

@@ -10,10 +10,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>INNOCENT</title> 
+    <title>INNOCENT</title>
     <link rel="icon"  href="{{ asset('img/logo.ico') }}">
 
- 
+
     <!-- Custom fonts for this template-->
     <link href="{{ asset('css/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
 
@@ -52,7 +52,7 @@
     <!-- logout -->
     <div class="navbar-nav ml-auto ml-md-0">
 
-        <a href="" style="text-decoration: none;" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+        <a href="" id="logout" style="text-decoration: none;" onclick="event.preventDefault(); document.getElementById('logout-form').submit(); this.style.display = 'none';">
             <i class="fas fa-power-off fa-lg text-danger"></i>
             <span style="font-size: 1.2em; font-weight: bold;" class="text-white">Logout</span>
         </a>
@@ -244,7 +244,7 @@
 
 <script>
 
-    $(function () {
+    window.onload = function(){
 
         @if(Session::has('success'))
         toastr.info('{{session('success')}}');
@@ -255,13 +255,12 @@
         @endif
 
         @if($errors->any())
-          @foreach($errors->all() as $error)
+        @foreach($errors->all() as $error)
         toastr.warning('{{ $error }}');
-          @endforeach
+        @endforeach
         @endif
 
-    })
 
-
+    }
 
 </script>
