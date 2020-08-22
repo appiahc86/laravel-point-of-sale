@@ -27,7 +27,7 @@
             @endphp
 
 <div class="container-flex">
-{!! Form::open(['method'=>'POST', 'action'=>'CartController@add', 'onsubmit'=>"document.getElementById('submitSale').style.display='none';"]) !!}
+{!! Form::open(['method'=>'POST', 'action'=>'CartController@add', 'onsubmit'=>"document.getElementById('addToCart').style.display='none';"]) !!}
     <div class="row">
 
         <div class="col-xl-5 col-lg-12 col-md-12 mb-2">
@@ -72,7 +72,7 @@
 
         <div class="col-xl-1 col-lg-12 col-md-12 mb-2">
 {{--          {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}--}}
-            <button type="submit" title="Add To Cart" class="btn-primary form-control" style="max-width: 100px !important;" id="submitSale">
+            <button type="submit" id="addToCart" title="Add To Cart" class="btn-primary form-control" style="max-width: 100px !important;">
                 <span class="fas fa-shopping-cart fa-lg"></span>
             </button>
         </div>
@@ -118,7 +118,8 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
         <td>{{ number_format($product->price, 2) }}</td>
 
         <td>
-            {!! Form::open(['method'=>'POST', 'action'=>['CartController@modify', $product->rawId()]]) !!}
+            {!! Form::open(['method'=>'POST',
+                'action'=>['CartController@modify', $product->rawId()]]) !!}
 
             <input type="hidden" name="price" value="{{$product->price}}">
             <div style="justify-content: center;" class="input-group">
@@ -140,7 +141,7 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
 
         <td>
             {!! Form::open(['method'=>'POST', 'action'=>['CartController@remove', $product->rawId()]]) !!}
-            <button type="submit" onclick="this.style.display='none';" class="btn btn-sm btn-danger text-white" title="Remove Item"><b>X</b></button>
+            <button type="submit" onclick=" this.disabled=true; form.submit();" class="btn btn-sm btn-danger text-white" title="Remove Item"><b>X</b></button>
             {!! Form::close() !!}
         </td>
 

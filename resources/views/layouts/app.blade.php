@@ -104,7 +104,9 @@
 
 
             myForm.onsubmit = function () {
-                prev.style.display = 'none';
+                // prev.style.display = 'none';
+                prev.disabled = true;
+                prev.value = 'Please wait...'
             }
 
         }
