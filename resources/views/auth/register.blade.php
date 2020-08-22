@@ -8,7 +8,7 @@
                 <div class="card-header bg-primary text-white"><b><span class="fas fa-user"></span> Register A User</b></div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" class="myForm">
                         @csrf
 
                         <div class="form-group row">
@@ -75,11 +75,11 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary btn-lg">
+                                <button type="submit" class="btn btn-primary btn-lg prev">
                                     <b>Register</b>
                                 </button>
-                                <span>
-                                    <a href="{{ url('/') }}" class="btn btn-secondary btn-lg"><b>Cancel</b></a>
+                                <span style="float: right;">
+                                    <a href="{{ url('/') }}" class="btn btn-secondary btn-lg prev"><b>Cancel</b></a>
                                 </span>
                             </div>
                         </div>

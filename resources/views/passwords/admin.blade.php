@@ -9,7 +9,7 @@
 
                     <div class="card-body">
 
-                            {!! Form::model($user,['method'=>'PATCH', 'action'=>['admin\UsersController@update', $user->id]]) !!}
+                            {!! Form::model($user,['method'=>'PATCH', 'action'=>['admin\UsersController@update', $user->id], 'onsubmit'=>"document.getElementById('resetPass').style.display='none';"]) !!}
 
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right"><b>Name</b></label>
@@ -27,7 +27,7 @@
 
 
 
- 
+
 
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right"><b>New Password</b></label>
@@ -47,10 +47,10 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary btn-lg">
+                                    <button type="submit" class="btn btn-primary btn-lg" id="resetPass">
                                       <b>Reset</b>
                                     </button>
-                                    <span><a href="{{ url('/') }}" class="btn btn-secondary btn-lg">Cancel</a></span>
+                                    <span style="float: right;"><a href="{{ url('/') }}" class="btn btn-secondary btn-lg">Cancel</a></span>
                                 </div>
                             </div>
                         {!! Form::close() !!}

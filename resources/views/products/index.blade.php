@@ -111,7 +111,7 @@
                 </div>
                 <div class="modal-footer">
                     {!! Form::open(['method'=>'DELETE', 'action'=>['admin\ProductsController@destroy', $product->id]]) !!}
-                    {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                    {!! Form::submit('Delete', ['class'=>'btn btn-danger', 'onclick'=>"this.style.display='none'"]) !!}
                     {!! Form::close() !!}
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                 </div>
@@ -250,7 +250,7 @@
              $all_categories = \App\Category::pluck('name','name')->all();
              @endphp
 
-    {!! Form::open(['method'=>'post', 'action'=>'admin\ProductsController@store']) !!}
+    {!! Form::open(['method'=>'post', 'action'=>'admin\ProductsController@store', 'class'=>'myForm']) !!}
 
 
         <div class="input-group">
@@ -319,7 +319,7 @@
 
 
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary"><i class="fas fa-arrow-circle-down"></i> Save</button>
+            <button type="submit" class="btn btn-primary prev"><i class="fas fa-arrow-circle-down"></i> Save</button>
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
         </div>
 

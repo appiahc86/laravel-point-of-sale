@@ -2,7 +2,7 @@
 
 
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/toastr.css') }}">    
+<link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
 @endsection
 
 @section('content')
@@ -94,7 +94,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         {!! Form::open(['method'=>'DELETE', 'action'=>['admin\VendorsController@destroy', $vendor->id]]) !!}
-                                        {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                                        {!! Form::submit('Delete', ['class'=>'btn btn-danger', 'onclick'=>"this.style.display='none'"]) !!}
                                         {!! Form::close() !!}
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                     </div>
@@ -203,7 +203,7 @@
             </div>
 
 <div class="modal-body">
-    {!! Form::open(['method'=>'POST', 'action'=>'admin\VendorsController@store']) !!}
+    {!! Form::open(['method'=>'POST', 'action'=>'admin\VendorsController@store', 'class'=>'myForm']) !!}
 
     {!! Form::label('company', 'Name Of Company') !!}
 <div class="input-group">
@@ -237,7 +237,7 @@
 </div>
 
 <div class="modal-footer">
-    {!! Form::submit('Save', ['class'=>'btn btn-primary']) !!}
+    {!! Form::submit('Save', ['class'=>'btn btn-primary prev']) !!}
     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
 </div>
 

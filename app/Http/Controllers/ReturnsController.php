@@ -53,10 +53,6 @@ class ReturnsController extends Controller
                    //Get change for the customer
                     $change += $order->amount;
 
-
-
-
-
                    $product->update([  //Add quantity to products table
                       'qty' => $prod_qty
                    ]);

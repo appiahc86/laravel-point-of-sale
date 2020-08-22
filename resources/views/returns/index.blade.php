@@ -46,7 +46,12 @@
                         <b>{{ session('fail_return') }}</b>
                     </h3>
                 @endif
-
+                      {{-- If invoice number does not exist --}}
+                @if(Session::has('warning'))
+                    <h3 class="text-danger">
+                        <b>{{ session('warning') }}</b>
+                    </h3>
+                @endif
 
 
                 {{-- if there is change --}}

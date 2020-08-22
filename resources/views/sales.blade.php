@@ -27,7 +27,7 @@
             @endphp
 
 <div class="container-flex">
-{!! Form::open(['method'=>'POST', 'action'=>'CartController@add']) !!}
+{!! Form::open(['method'=>'POST', 'action'=>'CartController@add', 'onsubmit'=>"document.getElementById('submitSale').style.display='none';"]) !!}
     <div class="row">
 
         <div class="col-xl-5 col-lg-12 col-md-12 mb-2">
@@ -72,7 +72,7 @@
 
         <div class="col-xl-1 col-lg-12 col-md-12 mb-2">
 {{--          {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}--}}
-            <button type="submit" title="Add To Cart" class="btn-primary form-control" style="max-width: 100px !important;">
+            <button type="submit" title="Add To Cart" class="btn-primary form-control" style="max-width: 100px !important;" id="submitSale">
                 <span class="fas fa-shopping-cart fa-lg"></span>
             </button>
         </div>
@@ -140,7 +140,7 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
 
         <td>
             {!! Form::open(['method'=>'POST', 'action'=>['CartController@remove', $product->rawId()]]) !!}
-            <button type="submit" class="btn btn-sm btn-danger text-white" title="Remove Item"><b>X</b></button>
+            <button type="submit" onclick="this.style.display='none';" class="btn btn-sm btn-danger text-white" title="Remove Item"><b>X</b></button>
             {!! Form::close() !!}
         </td>
 
@@ -195,7 +195,7 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
                             </button>
                         </div>
                         <div class="modal-body">
-                    {!! Form::open(['method'=>'POST', 'action'=>'CartController@pay']) !!}
+                    {!! Form::open(['method'=>'POST', 'action'=>'CartController@pay', 'class'=>'myForm']) !!}
 
 
                             <div class="input-group">
@@ -205,7 +205,6 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
                                 {!! Form::text('cust_name', null, ['class'=>'form-control', 'placeholder'=>'Name of Customer', 'autocomplete'=>'off']) !!}
                             </div>
                             <br>
-
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -217,7 +216,7 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
                         </div>
                         <div class="modal-footer">
 
-                            {!! Form::submit('Proceed', ['class'=>'btn btn-primary']) !!}
+                            {!! Form::submit('Proceed', ['class'=>'btn btn-primary', 'onclick'=>"this.style.display='none'"]) !!}
 
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         </div>
@@ -251,7 +250,7 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
            });
 
 
-           //IMCREMENT
+           //INCREMENT
             $('.increment').click(function () {
                 var increment = $(this).prev();
                 increment.val( +increment.val() + 1 );

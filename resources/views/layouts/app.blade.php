@@ -30,6 +30,48 @@
         font-size: 3em;
         font-family: 'Times New Roman', Times, serif;
     }
+
+
+
+
+    #preloader:before {
+          content: "";
+          position: fixed;
+          top: calc(50% - 30px);
+          left: calc(50% - 30px);
+          border: 6px solid #f2f2f2;
+          border-top: 6px solid #4e7dff;
+          border-radius: 50%;
+          width: 60px;
+          height: 60px;
+          -webkit-animation: animate-preloader 1s linear infinite;
+          animation: animate-preloader 1s linear infinite;
+      }
+
+    @-webkit-keyframes animate-preloader {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes animate-preloader {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
 </style>
 
 <body style="background: rgba(195,207,220,0.76)">
@@ -42,7 +84,30 @@
         </main>
     </div>
 
-@yield('scripts')
+    <div id="preloader"></div>
 
+
+
+    <script>
+        window.onload = function () {
+            const prev = document.querySelector('.prev');
+            const myForm = document.querySelector('.myForm');
+
+
+
+                if ($('#preloader').length) {
+                    $('#preloader').delay(100).fadeOut('slow', function () {
+                        $(this).remove();
+                    });
+                }
+
+
+
+            myForm.onsubmit = function () {
+                prev.style.display = 'none';
+            }
+
+        }
+    </script>
 </body>
 </html>

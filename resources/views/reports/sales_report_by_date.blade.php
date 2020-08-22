@@ -41,21 +41,21 @@
             <div class="row">
 
 
-                    {!! Form::open(['method'=>'POST', 'action'=>'ReportController@sales_by_date', 'class'=>'m-auto']) !!}
+                    {!! Form::open(['method'=>'POST', 'action'=>'ReportController@sales_by_date', 'class'=>'m-auto', 'onsubmit'=>"document.getElementById('subSalesReport').style.display='none';"]) !!}
                     <div class="input-group">
 
 
                         <div class="input-group-prepend">
                             <span class="input-group-text text-white bg-dark"><b>From</b></span>
                         </div>
-                        <input type="text" name="from" class="form-control mydate" readonly="yes">&nbsp;
+                        <input type="text" name="from" class="form-control mydate" required readonly >&nbsp;
                         &nbsp;
 
                         <div class="input-group-prepend">
                             <span class="input-group-text text-white bg-dark"><b>To</b></span>
                         </div>
-                        <input type="text" name="to" class="form-control mydate" readonly="yes"> &nbsp;
-                        <button type="submit" name="submit" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
+                        <input type="text" name="to" class="form-control mydate" readonly required> &nbsp;
+                        <button type="submit" name="submit" id="subSalesReport" class="btn btn-primary"><i class="fas fa-search"></i> Search</button>
 
 
                     </div>
@@ -158,7 +158,7 @@
 @section('scripts')
 
       <script src="{{ asset('jquery-ui/jquery-ui.js') }}"></script>
-      
+
         <script>
             $(".mydate").datepicker({dateFormat: 'yy-mm-dd', changeYear: true, changeMonth: true});
 

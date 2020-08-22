@@ -29,6 +29,48 @@
     .sticky-footer{
         background: #ccc !important;
     }
+
+
+
+
+    #preloader:before {
+        content: "";
+        position: fixed;
+        top: calc(50% - 30px);
+        left: calc(50% - 30px);
+        border: 6px solid #f2f2f2;
+        border-top: 6px solid #4e7dff;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        -webkit-animation: animate-preloader 1s linear infinite;
+        animation: animate-preloader 1s linear infinite;
+    }
+
+    @-webkit-keyframes animate-preloader {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes animate-preloader {
+        0% {
+            -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+
+        100% {
+            -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
 </style>
 
 <body id="page-top" style="background: #ccc;">
@@ -154,10 +196,7 @@
         </li>     <!-- ./Reports-->
 
 
-
         <!-- Sales Returns -->
-
-
         <li class="nav-item">
             <a class="nav-link" href="{{ route('returns') }}">
                 <i class="fas fa-fw fa-receipt fa-lg text-warning"></i>
@@ -204,12 +243,7 @@
     </ul>
 
 
-
-
     @yield('content')
-
-
-
 
 
     <!-- Sticky Footer -->
@@ -223,10 +257,10 @@
     </footer>
 
 </div>
-<!-- /.content-wrapper -->
-
-</div>
 <!-- /#wrapper -->
+
+
+<div id="preloader"></div>
 
 <!-- Bootstrap core JavaScript-->
 <script src="{{ asset('js/app.js') }}"></script>
@@ -239,12 +273,24 @@
 @yield('scripts')
 
 
-</body>
-</html>
-
 <script>
 
     window.onload = function(){
+
+        if ($('#preloader').length) {
+            $('#preloader').delay(100).fadeOut('slow', function () {
+                $(this).remove();
+            });
+        }
+
+
+
+            const prev = document.querySelector('.prev');
+            const myForm = document.querySelector('.myForm');
+
+            myForm.onsubmit = function () {
+                prev.style.display = 'none';
+            };
 
         @if(Session::has('success'))
         toastr.info('{{session('success')}}');
@@ -264,3 +310,8 @@
     }
 
 </script>
+
+</body>
+</html>
+
+

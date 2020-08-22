@@ -13,6 +13,9 @@
 
                 <li class="breadcrumb-item" style="font-size: 1.4em;">
                     <i class="fas fa-fw fa-user-friends fa-lg"></i> <b>USERS</b>
+                   @if(Session::has('success'))
+                        <span class="text-success ml-5">{{session('success')}}</span>
+                   @endif
                 </li>
             </ol>
             <br><br>
@@ -41,7 +44,7 @@
                         <th>NAME</th>
                         <th>USERNAME</th>
                         <th>ROLE</th>
-                        <th colspan="2"></th>                    
+                        <th colspan="2"></th>
                     </tr>
                     </tfoot>
 
@@ -52,7 +55,7 @@
                   @if (Auth::user()->id == $user->id)
                       @php continue; @endphp
                   @endif
-                    
+
                         <tr>
 
                             <td>{{$user->name}}</td>
@@ -94,7 +97,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             {!! Form::open(['method'=>'DELETE', 'action'=>['admin\UsersController@destroy', $user->id]]) !!}
-                                            {!! Form::submit('Delete', ['class'=>'btn btn-danger']) !!}
+                                            {!! Form::submit('Delete', ['class'=>'btn btn-danger prev', 'onclick'=>"this.style.display = 'none'"]) !!}
                                             {!! Form::close() !!}
                                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                                         </div>
@@ -120,36 +123,6 @@
 
 
 
-
-
-            <!--   Modal for Adding new user-->
-            <div class="modal fade" id="addcategory" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <br>
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-center" id="exampleModalLabel"><i class="fas fa-plus"></i><span class="text-info"> Add New Category</span></h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            {!! Form::open(['method'=>'post', 'action'=>'admin\CategoriesController@store']) !!}
-                            <label>Category Name</label>
-                            <input name="name" type="text" minlength="3" class="form-control" placeholder="Category Name" autocomplete="off" required>
-                        </div>
-
-                        <div class="modal-footer">
-                            <button type="submit" name="save_cat" class="btn btn-primary">Save</button>
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                        </div>
-
-                        {!! Form::close() !!}
-
-                    </div>
-                </div>
-            </div>
 
 
 

@@ -11,7 +11,7 @@
 
                     <div class="card-body">
 
-                        {!! Form::open(['method'=>'POST', 'action'=>'PasswordController@reset']) !!}
+                        {!! Form::open(['method'=>'POST', 'action'=>'PasswordController@reset', 'onsubmit'=>"document.getElementById('subPassReset').style.display='none';"]) !!}
 
                         <div class="form-group row">
                             <label for="current" class="col-md-4 col-form-label text-md-right"><b>Current Password</b></label>
@@ -54,10 +54,10 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary btn-lg">
+                                <button type="submit" id="subPassReset" class="btn btn-primary btn-lg">
                                     <b>Reset</b>
                                 </button>
-                                <span>
+                                <span style="float: right;">
                                      <a href="{{ url('/') }}" class="btn btn-secondary btn-lg">
                                     <b>Cancel</b>
                                 </a>
