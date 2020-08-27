@@ -1,3 +1,18 @@
+@php use App\Company;
+ $cmp = Company::first()->get();
+@endphp
+
+@foreach($cmp as $cmpp)
+    @php
+        $companyName = $cmpp->name;
+        $companyAddress = $cmpp->address;
+        $companyContact = $cmpp->contact;
+      break;
+
+    @endphp
+@endforeach
+
+
 @extends('layouts.app')
 
 <style>
@@ -34,7 +49,7 @@
 
 
 @section('header')
-    <div class="my-title mt-5">INNOCENT ENTERPRISE</div>
+    <div class="my-title mt-5">{{$companyName}}</div>
 @endsection
 
 

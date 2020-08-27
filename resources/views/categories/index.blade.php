@@ -165,13 +165,14 @@
                     </div>
 
                     <div class="modal-body">
-                      {!! Form::open(['method'=>'post', 'action'=>'admin\CategoriesController@store', 'onsubmit'=>"document.getElementById('addCategory').style.display='none';"]) !!}
+                      {!! Form::open(['method'=>'post', 'action'=>'admin\CategoriesController@store', 'class'=>"myForm"]) !!}
                             <label>Category Name</label>
                             <input name="name" type="text" minlength="3" class="form-control" placeholder="Category Name" autocomplete="off" required>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" name="save_cat" id="addCategory" class="btn btn-primary">Save</button>
+{{--                        <button type="submit" name="save_cat" id="addCategory" class="btn btn-primary">Save</button>--}}
+                        <input type="submit" name="save_cat" id="addCategory"  class="btn btn-primary prev" value="Save">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                     </div>
 

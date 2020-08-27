@@ -1,6 +1,20 @@
 @php
     use Overtrue\LaravelShoppingCart\Facade as Cart;
+    use App\Company;
+    $cmp = Company::first()->get();
 @endphp
+
+@foreach($cmp as $cmpp)
+    @php
+        $companyName = $cmpp->name;
+        $companyAddress = $cmpp->address;
+        $companyContact = $cmpp->contact;
+      break;
+
+    @endphp
+@endforeach
+
+
 
 @extends('layouts.layout')
 
@@ -24,9 +38,9 @@
 
 
                         <p style="text-align: center;">
-                        <b style="font-size: 2em;">INNOCENT ENTERPRISE</b> <br>
-                        Location: Suame, Near GCB.<br>
-                        Tel: 0242740320 / 0272069739.
+                        <b style="font-size: 2em;">{{$companyName}}</b> <br>
+                        Location: {{$companyAddress}}.<br>
+                        Tel: {{$companyContact}}.
                         </p>
 
             <hr>

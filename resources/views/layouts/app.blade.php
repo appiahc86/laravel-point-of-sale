@@ -9,7 +9,7 @@
 
     <link rel="icon"  href="{{ asset('img/logo.ico') }}">
 
-    <title>INNOCENT</title>
+    <title>POINT OF SALE</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

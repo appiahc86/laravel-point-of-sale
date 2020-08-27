@@ -27,7 +27,7 @@
             @endphp
 
 <div class="container-flex">
-{!! Form::open(['method'=>'POST', 'action'=>'CartController@add', 'onsubmit'=>"document.getElementById('addToCart').style.display='none';"]) !!}
+{!! Form::open(['method'=>'POST', 'action'=>'CartController@add', 'class'=>"myForm"]) !!}
     <div class="row">
 
         <div class="col-xl-5 col-lg-12 col-md-12 mb-2">
@@ -72,9 +72,8 @@
 
         <div class="col-xl-1 col-lg-12 col-md-12 mb-2">
 {{--          {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}--}}
-            <button type="submit" id="addToCart" title="Add To Cart" class="btn-primary form-control" style="max-width: 100px !important;">
-                <span class="fas fa-shopping-cart fa-lg"></span>
-            </button>
+            <input type="submit" id="addToCart" title="Add To Cart" value="Add" class="btn-primary form-control prev" style="max-width: 100px !important;">
+
         </div>
 
 
@@ -196,7 +195,7 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
                             </button>
                         </div>
                         <div class="modal-body">
-                    {!! Form::open(['method'=>'POST', 'action'=>'CartController@pay', 'class'=>'myForm']) !!}
+                    {!! Form::open(['method'=>'POST', 'action'=>'CartController@pay']) !!}
 
 
                             <div class="input-group">

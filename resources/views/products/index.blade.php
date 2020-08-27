@@ -145,7 +145,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><b>Category</b></span>
             </div>
-           {!! Form::select('category', array(''=>'Select Category') + $categories, null, ['class'=>'form-control']) !!}
+           {!! Form::select('category', array(''=>'Select Category') + $categories, null, ['class'=>'form-control', 'required']) !!}
         </div>  <br>
 
 
@@ -257,7 +257,7 @@
             <div class="input-group-prepend">
                 <span class="input-group-text"><b>Category</b></span>
             </div>
-            {!! Form::select('category', array(''=>'--Select Category') + $all_categories, null, ['class'=>'form-control'] ) !!}
+            {!! Form::select('category', array(''=>'--Select Category') + $all_categories, null, ['class'=>'form-control', 'required'] ) !!}
         </div><br>
 
 
@@ -319,7 +319,7 @@
 
 
         <div class="modal-footer">
-            <button type="submit" class="btn btn-primary prev"><i class="fas fa-arrow-circle-down"></i> Save</button>
+            <input type="submit" class="btn btn-primary prev" value="Add">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
         </div>
 

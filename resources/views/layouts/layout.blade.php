@@ -1,3 +1,17 @@
+@php use App\Company;
+ $cmp = Company::first()->get();
+@endphp
+
+@foreach($cmp as $cmpp)
+@php
+    $companyName = $cmpp->name;
+    $companyAddress = $cmpp->address;
+    $companyContact = $cmpp->contact;
+    $companyId = $cmpp->id;
+  break;
+
+@endphp
+@endforeach
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,7 +24,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>INNOCENT</title>
+    <title>POINT OF SALE</title>
     <link rel="icon"  href="{{ asset('img/logo.ico') }}">
 
 
@@ -218,7 +232,15 @@
                 <a class="dropdown-item change_color" href="{{ route('passwords') }}">Reset Password</a>
 
             </div>
-        </li>       <!-- ./Settings Dropdown-->
+        </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('edit-company', $companyId) }}">
+                    <i class="fas fa-fw fa-home fa-lg"></i>
+                    <span class="text-white"> Edit Shop Details</span></a>
+            </li>
+
+            <!-- ./Settings Dropdown-->
 
         @else
 
@@ -250,7 +272,7 @@
     <footer class="sticky-footer">
         <div class="container my-auto">
             <div class="copyright text-center my-auto" style="font-size: 1em;">
-                <strong>Copyright &copy; @php echo date('Y'); @endphp <span class="text-primary">Innocent Enterprise</span>.</strong>
+                <strong>Copyright &copy; @php echo date('Y'); @endphp <span class="text-primary">{{$companyName}}</span>.</strong>
                 All rights reserved.
             </div>
         </div>
@@ -289,7 +311,8 @@
             const myForm = document.querySelector('.myForm');
 
             myForm.onsubmit = function () {
-                prev.style.display = 'none';
+                prev.disabled = true;
+                prev.value = 'Processing...'
             };
 
         @if(Session::has('success'))

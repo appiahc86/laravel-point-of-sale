@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-
+//Add company
+Route::get('/company/add', 'CompanyController@index')->name('add-company');
+Route::post('/company/store', 'CompanyController@store')->name('store-company');
 
 
 Route::get('/', 'HomeController@index')->name('home'); //Protected by Auth Already
@@ -25,6 +27,10 @@ Auth::routes(['verify'=>false, 'reset'=>false]);
 
                       //Admin Middleware
 Route::group(['middleware'=>['auth', 'admin']], function (){
+    //EDIT COMPANY
+    Route::get('/company/edit/{company}', 'CompanyController@edit')->name('edit-company');
+    Route::patch('/company/update/{company}', 'CompanyController@update')->name('update-company');
+
     //USERS
     Route::resource('admin/users', 'admin\UsersController');
 
