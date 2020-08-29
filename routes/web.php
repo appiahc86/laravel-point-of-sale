@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
+
+
 //Add company
 Route::get('/company/add', 'CompanyController@index')->name('add-company');
 Route::post('/company/store', 'CompanyController@store')->name('store-company');
@@ -107,6 +109,9 @@ Route::group(['middleware'=>['auth']], function (){
     Route::get('/report/purchases/report', 'ReportController@purchases_report_by_date')->name('purchases_report_by_date');
     Route::post('/report/purchases/report', 'ReportController@purchases_by_date')->name('purchases_by_date');
     Route::get('/report/open/purchases/report', 'ReportController@open_purchases')->name('open_purchases');
+
+    //BACKUP DATABASE
+    Route::get('/backup', 'BackupController@index')->name('backup');
 
 });
     //./AUTH ROUTES

@@ -15,7 +15,8 @@
         "laravel/framework": "^7.0",
         "laravel/tinker": "^2.0",
         "laravelcollective/html": "^6.1",
-        "overtrue/laravel-shopping-cart": "~2.0"
+        "overtrue/laravel-shopping-cart": "~2.0",
+        "spatie/laravel-db-snapshots": "^1.6"
     },
     "require-dev": {
         "facade/ignition": "^2.0",

@@ -34,7 +34,6 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin.css') }}" rel="stylesheet">
 
-
 @yield('links')
 
 </head>
@@ -83,6 +82,24 @@
             -webkit-transform: rotate(360deg);
             transform: rotate(360deg);
         }
+    }
+
+
+/*    Modal*/
+
+    /* The Modal (background) */
+    .myModal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        padding-top: 200px; /* Location of the box */
+        left: 0;
+        top: 0;
+        margin-left: 25%;
+        width: 50%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+
     }
 
 </style>
@@ -256,13 +273,19 @@
         <br> <br>
 
         <!-- Backup -->
-{{--        <li class="nav-item">            --}}
-{{--            <a class="nav-link" href="" style="color: #ffabb7;">--}}
-{{--                <i class="fas fa-fw fa-database fa-lg"></i>--}}
-{{--                <span> Back Up</span></a>--}}
-{{--        </li>--}}
+        <li class="nav-item">
+            <a class="nav-link"
+               href="{{route('backup')}}"
+               style="color: #ffabb7;"
+               onclick="return confirm('This will Backup The Database. Click OK to Proceed')"
+            >
+                <i class="fas fa-fw fa-database fa-lg"></i>
+                <span> Back Up</span></a>
+        </li>
 
     </ul>
+
+
 
 
     @yield('content')
@@ -291,6 +314,7 @@
 <script src="{{ asset('js/sb-admin.min.js') }}"></script>
 
 <script src="{{ asset('css/fontawesome-free/js/all.min.js') }}"></script>
+
 
 @yield('scripts')
 
@@ -328,6 +352,7 @@
         toastr.warning('{{ $error }}');
         @endforeach
         @endif
+
 
 
     }

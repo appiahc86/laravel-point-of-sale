@@ -1,9 +1,7 @@
 @extends('layouts.layout')
-
 @section('links')
-<link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/toastr.css') }}">
 @endsection
-
 @section('content')
 
 
@@ -208,10 +206,10 @@
 
 {{-- Include Bar and Pie Chart--}}
 @section('scripts')
-<script src="{{ asset('js/Chart.min.js') }}"></script>
-<script src="{{ asset('js/toastr.js') }}"></script>
 
-    @include('partials.barchart')
-    @include('partials.piechart')
 
+         <script src="{{ asset('js/Chart.min.js') }}"></script>
+        @include('partials.barchart')
+        @include('partials.piechart')
+        <script src="{{ asset('js/toastr.js') }}"></script>
 @endsection

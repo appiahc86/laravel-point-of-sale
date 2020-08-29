@@ -77,6 +77,9 @@ class ComposerStaticInitd66f1734f0ece18a2cb9485956566932
             'Symfony\\Component\\ErrorHandler\\' => 31,
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
+            'Spatie\\TemporaryDirectory\\' => 26,
+            'Spatie\\DbSnapshots\\' => 19,
+            'Spatie\\DbDumper\\' => 16,
         ),
         'R' => 
         array (
@@ -278,6 +281,18 @@ class ComposerStaticInitd66f1734f0ece18a2cb9485956566932
         'Symfony\\Component\\Console\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
+        ),
+        'Spatie\\TemporaryDirectory\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/temporary-directory/src',
+        ),
+        'Spatie\\DbSnapshots\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src',
+        ),
+        'Spatie\\DbDumper\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/spatie/db-dumper/src',
         ),
         'Ramsey\\Uuid\\' => 
         array (
@@ -482,6 +497,7 @@ class ComposerStaticInitd66f1734f0ece18a2cb9485956566932
         'App\\Http\\Controllers\\Auth\\ResetPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ResetPasswordController.php',
         'App\\Http\\Controllers\\Auth\\VerificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerificationController.php',
         'App\\Http\\Controllers\\CartController' => __DIR__ . '/../..' . '/app/Http/Controllers/CartController.php',
+        'App\\Http\\Controllers\\CompanyController' => __DIR__ . '/../..' . '/app/Http/Controllers/CompanyController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/PasswordController.php',
@@ -4048,6 +4064,37 @@ class ComposerStaticInitd66f1734f0ece18a2cb9485956566932
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Spatie\\DbDumper\\Compressors\\Compressor' => __DIR__ . '/..' . '/spatie/db-dumper/src/Compressors/Compressor.php',
+        'Spatie\\DbDumper\\Compressors\\GzipCompressor' => __DIR__ . '/..' . '/spatie/db-dumper/src/Compressors/GzipCompressor.php',
+        'Spatie\\DbDumper\\Databases\\MongoDb' => __DIR__ . '/..' . '/spatie/db-dumper/src/Databases/MongoDb.php',
+        'Spatie\\DbDumper\\Databases\\MySql' => __DIR__ . '/..' . '/spatie/db-dumper/src/Databases/MySql.php',
+        'Spatie\\DbDumper\\Databases\\PostgreSql' => __DIR__ . '/..' . '/spatie/db-dumper/src/Databases/PostgreSql.php',
+        'Spatie\\DbDumper\\Databases\\Sqlite' => __DIR__ . '/..' . '/spatie/db-dumper/src/Databases/Sqlite.php',
+        'Spatie\\DbDumper\\DbDumper' => __DIR__ . '/..' . '/spatie/db-dumper/src/DbDumper.php',
+        'Spatie\\DbDumper\\Exceptions\\CannotSetParameter' => __DIR__ . '/..' . '/spatie/db-dumper/src/Exceptions/CannotSetParameter.php',
+        'Spatie\\DbDumper\\Exceptions\\CannotStartDump' => __DIR__ . '/..' . '/spatie/db-dumper/src/Exceptions/CannotStartDump.php',
+        'Spatie\\DbDumper\\Exceptions\\DumpFailed' => __DIR__ . '/..' . '/spatie/db-dumper/src/Exceptions/DumpFailed.php',
+        'Spatie\\DbSnapshots\\Commands\\Cleanup' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Commands/Cleanup.php',
+        'Spatie\\DbSnapshots\\Commands\\Concerns\\AsksForSnapshotName' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Commands/Concerns/AsksForSnapshotName.php',
+        'Spatie\\DbSnapshots\\Commands\\Create' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Commands/Create.php',
+        'Spatie\\DbSnapshots\\Commands\\Delete' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Commands/Delete.php',
+        'Spatie\\DbSnapshots\\Commands\\ListSnapshots' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Commands/ListSnapshots.php',
+        'Spatie\\DbSnapshots\\Commands\\Load' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Commands/Load.php',
+        'Spatie\\DbSnapshots\\DbDumperFactory' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/DbDumperFactory.php',
+        'Spatie\\DbSnapshots\\DbSnapshotsServiceProvider' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/DbSnapshotsServiceProvider.php',
+        'Spatie\\DbSnapshots\\Events\\CreatedSnapshot' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Events/CreatedSnapshot.php',
+        'Spatie\\DbSnapshots\\Events\\CreatingSnapshot' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Events/CreatingSnapshot.php',
+        'Spatie\\DbSnapshots\\Events\\DeletedSnapshot' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Events/DeletedSnapshot.php',
+        'Spatie\\DbSnapshots\\Events\\DeletingSnapshot' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Events/DeletingSnapshot.php',
+        'Spatie\\DbSnapshots\\Events\\LoadedSnapshot' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Events/LoadedSnapshot.php',
+        'Spatie\\DbSnapshots\\Events\\LoadingSnapshot' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Events/LoadingSnapshot.php',
+        'Spatie\\DbSnapshots\\Exceptions\\CannotCreateDbDumper' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Exceptions/CannotCreateDbDumper.php',
+        'Spatie\\DbSnapshots\\Exceptions\\CannotCreateDisk' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Exceptions/CannotCreateDisk.php',
+        'Spatie\\DbSnapshots\\Helpers\\Format' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Helpers/Format.php',
+        'Spatie\\DbSnapshots\\Snapshot' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/Snapshot.php',
+        'Spatie\\DbSnapshots\\SnapshotFactory' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/SnapshotFactory.php',
+        'Spatie\\DbSnapshots\\SnapshotRepository' => __DIR__ . '/..' . '/spatie/laravel-db-snapshots/src/SnapshotRepository.php',
+        'Spatie\\TemporaryDirectory\\TemporaryDirectory' => __DIR__ . '/..' . '/spatie/temporary-directory/src/TemporaryDirectory.php',
         'Symfony\\Component\\Console\\Application' => __DIR__ . '/..' . '/symfony/console/Application.php',
         'Symfony\\Component\\Console\\CommandLoader\\CommandLoaderInterface' => __DIR__ . '/..' . '/symfony/console/CommandLoader/CommandLoaderInterface.php',
         'Symfony\\Component\\Console\\CommandLoader\\ContainerCommandLoader' => __DIR__ . '/..' . '/symfony/console/CommandLoader/ContainerCommandLoader.php',

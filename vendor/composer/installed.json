@@ -2791,7 +2791,8 @@
         "homepage": "https://github.com/sebastianbergmann/php-token-stream/",
         "keywords": [
             "tokenizer"
-        ]
+        ],
+        "abandoned": true
     },
     {
         "name": "phpunit/phpunit",
@@ -4099,6 +4100,167 @@
         ],
         "description": "Library that helps with managing the version number of Git-hosted PHP projects",
         "homepage": "https://github.com/sebastianbergmann/version"
+    },
+    {
+        "name": "spatie/db-dumper",
+        "version": "2.16.1",
+        "version_normalized": "2.16.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/spatie/db-dumper.git",
+            "reference": "56448e8f41d4e8e83babf701d5708b1e597e8ec6"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/spatie/db-dumper/zipball/56448e8f41d4e8e83babf701d5708b1e597e8ec6",
+            "reference": "56448e8f41d4e8e83babf701d5708b1e597e8ec6",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.2",
+            "symfony/process": "^4.2|^5.0"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^7.0|^8.0"
+        },
+        "time": "2020-05-06T14:32:38+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Spatie\\DbDumper\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be",
+                "homepage": "https://spatie.be",
+                "role": "Developer"
+            }
+        ],
+        "description": "Dump databases",
+        "homepage": "https://github.com/spatie/db-dumper",
+        "keywords": [
+            "database",
+            "db-dumper",
+            "dump",
+            "mysqldump",
+            "spatie"
+        ]
+    },
+    {
+        "name": "spatie/laravel-db-snapshots",
+        "version": "1.6.2",
+        "version_normalized": "1.6.2.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/spatie/laravel-db-snapshots.git",
+            "reference": "3f1f2e0a44d8c27902bf9cbb91cc827304e5ebf2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/spatie/laravel-db-snapshots/zipball/3f1f2e0a44d8c27902bf9cbb91cc827304e5ebf2",
+            "reference": "3f1f2e0a44d8c27902bf9cbb91cc827304e5ebf2",
+            "shasum": ""
+        },
+        "require": {
+            "illuminate/support": "^6.0|^7.0",
+            "league/flysystem": "^1.0.41",
+            "php": "^7.4",
+            "spatie/db-dumper": "^2.11",
+            "spatie/temporary-directory": "^1.1"
+        },
+        "require-dev": {
+            "mockery/mockery": "^1.3",
+            "orchestra/testbench": "^4.0|^5.0",
+            "phpunit/phpunit": "^9.1"
+        },
+        "time": "2020-08-26T09:01:05+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "Spatie\\DbSnapshots\\DbSnapshotsServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Spatie\\DbSnapshots\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Freek Van der Herten",
+                "email": "freek@spatie.be",
+                "homepage": "https://spatie.be",
+                "role": "Developer"
+            }
+        ],
+        "description": "Quickly dump and load databases",
+        "homepage": "https://github.com/spatie/laravel-db-snapshots",
+        "keywords": [
+            "laravel-db-snapshots",
+            "spatie"
+        ]
+    },
+    {
+        "name": "spatie/temporary-directory",
+        "version": "1.2.3",
+        "version_normalized": "1.2.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/spatie/temporary-directory.git",
+            "reference": "eeb84a7a3543e90759cd852ccb468e3d3340d99d"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/spatie/temporary-directory/zipball/eeb84a7a3543e90759cd852ccb468e3d3340d99d",
+            "reference": "eeb84a7a3543e90759cd852ccb468e3d3340d99d",
+            "shasum": ""
+        },
+        "require": {
+            "php": "^7.2"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "^8.0"
+        },
+        "time": "2020-06-08T08:58:45+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Spatie\\TemporaryDirectory\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Alex Vanderbist",
+                "email": "alex@spatie.be",
+                "homepage": "https://spatie.be",
+                "role": "Developer"
+            }
+        ],
+        "description": "Easily create, use and destroy temporary directories",
+        "homepage": "https://github.com/spatie/temporary-directory",
+        "keywords": [
+            "spatie",
+            "temporary-directory"
+        ]
     },
     {
         "name": "swiftmailer/swiftmailer",

@@ -230,9 +230,8 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
 @endsection
 
 @section('scripts')
-
-<script src="{{ asset('js/bootstrap-select.js') }}"></script>
 <script src="{{ asset('js/toastr.js') }}"></script>
+<script src="{{ asset('js/bootstrap-select.js') }}"></script>
     <script>
 
 
