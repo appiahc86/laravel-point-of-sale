@@ -353,8 +353,6 @@
         @endforeach
         @endif
 
-
-
     }
 
 </script>

@@ -20,6 +20,7 @@
 
 
 
+
 @section('content')
 
     <div id="content-wrapper">
@@ -27,18 +28,46 @@
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
 
-                <li class="breadcrumb-item style="font-size: 1.4em;">
+                <li class="breadcrumb-item" style="font-size: 1.4em;">
                     <i class="fas fa-fw fa-money-bill fa-lg"></i> <b>Order Receipt</b>
                 </li>
             </ol>
             <br>
 
             <a href="/sales" class="hideme"><button class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> Back</button></a>
-            <button id="print" title="Print Invoice" class="btn btn-success"><i class="fas fa-print fa-lg"></i></button>
+            <button id="print" onclick="printInvoice();" title="Print Invoice" class="btn btn-success"><i class="fas fa-print fa-lg"></i></button>
 
 
-                        <p style="text-align: center;">
-                        <b style="font-size: 2em;">{{$companyName}}</b> <br>
+
+  <div  id="printArea">
+
+                {{--  Print styles    --}}
+      <style>
+          @media print {
+
+              .developer{
+                  text-align: center;
+                  margin-bottom: 5px;
+              }
+
+              .rest{
+                  font-size: 0.8em!important;
+              }
+
+              .compDetails{
+                  font-size: 1.5em!important;
+              }
+
+              .totalInvoice{
+                  font-size: 1.1em!important;
+              }
+
+
+          }
+      </style>
+
+                        <p style="text-align: center;" class=" rest">
+                        <b class="compDetails" style="font-size: 2em;">{{$companyName}}</b> <br>
                         Location: {{$companyAddress}}.<br>
                         Tel: {{$companyContact}}.
                         </p>
@@ -52,7 +81,7 @@
                <div class="row justify-content-center">
 
                    <div class="col-md-8 modify-col">
-                       <p>
+                       <p class="rest">
                            <b>Invoice#: {{ $invoice }}</b><br>
                            <b>Date: {{ date("d-M-Y") }}</b><br>
                            <b>Customer: {{ ucwords(strtolower($customer)) }}</b><br>
@@ -134,23 +163,26 @@
 
                        @endphp
 
-                       <div style="font-size: 1.2em;">
-                           <span><b>TOTAL: <span class="text-danger" style="font-size: 1.3em;">GH₵ {{ $total_orders }}</span></b></span> <br>
-                           <span><b>DISCOUNT: GH₵ {{ $discount }}</b></span> <br>
-                           <span><b>CASH TENDERED: GH₵ {{ number_format($tendered , 2)}}</b></span> <br>
-                           <span><b>CHANGE: GH₵ {{ number_format(($tendered - $total), 2) }}</b></span> <br>
+                       <div>
+                           <span style="font-size: 1.5em;" class="totalInvoice"><b>TOTAL: <span class="text-danger">GH₵ {{ $total_orders }}</span></b></span> <br>
+                           <span class="rest"><b>DISCOUNT: GH₵ {{ $discount }}</b></span> <br>
+                           <span class="rest"><b>CASH TENDERED: GH₵ {{ number_format($tendered , 2)}}</b></span> <br>
+                           <span class="rest" style="font-size: 1.3em;"><b>CHANGE: GH₵ {{ number_format(($tendered - $total), 2) }}</b></span> <br>
                        </div>
                        <br>
 
-                       <div class="text-center">
+                       <div class="text-center developer" >
                            Software By<b> Appiah</b> <br>
                            Tel: 0242740320
                        </div>
+                       <br>
 
                    </div>
                </div>
 
            </div>
+
+        </div>
 
             @endif
 
@@ -161,26 +193,26 @@
 
             @endsection
 
+
 @section('scripts')
 
-    <script>
-                $("#print").click(function () {
-                $(".sidebar").hide();
-                $("#print").hide();
-                $(".breadcrumb").hide();
-                $(".hideme").hide();
-                $("form").hide();
-                $(".sticky-footer").hide();
-                $('.modify-col').removeClass('col-md-8').addClass('col-md-12');
-                window.print();
+                <script>
+                        {{--Print Invioce--}}
+                    function printInvoice(){
 
-                    $(".sidebar").show();
-                    $("#print").show();
-                    $(".breadcrumb").show();
-                    $(".hideme").show();
-                    $("form").show();
-                    $(".sticky-footer").show();
-                    $('.modify-col').removeClass('col-md-12').addClass('col-md-8');
-                })
-    </script>
-@endsection
+                        var divtoprint = document.getElementById("printArea");
+                        var newWindow = window.open('','Print-Window', 'height=600, width=600');
+
+                        newWindow.document.open();
+                        newWindow.document.write("<html><body onload='window.print()'>"+divtoprint.innerHTML+"</body></html>");
+
+                        newWindow.document.close();
+
+                        setTimeout(function () {
+                            newWindow.close();
+                        },2000)
+
+                    }
+
+                </script>
+    @endsection
