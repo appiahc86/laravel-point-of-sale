@@ -45,29 +45,48 @@
       <style>
           @media print {
 
+              .compDetails{
+                  margin-top: 0px;
+              }
+
+              table{
+                  font-size: 11px!important;
+              }
               .developer{
                   text-align: center;
-                  margin-bottom: 5px;
+                  font-size: 10px!important;
+                  margin-top: 0px;
               }
 
               .rest{
-                  font-size: 0.8em!important;
+                  font-size: 11px!important;
               }
 
-              .compDetails{
-                  font-size: 1.5em!important;
+              .compName{
+                  font-size: 13px!important;
               }
 
               .totalInvoice{
-                  font-size: 1.1em!important;
+                  font-size: 12px!important;
               }
 
 
           }
+
+          @media screen {
+              .totalPrice, .change {
+                  font-size: 1.5em;
+              }
+
+              .change{
+                  font-weight: bold;
+              }
+
+          }
       </style>
 
-                        <p style="text-align: center;" class=" rest">
-                        <b class="compDetails" style="font-size: 2em;">{{$companyName}}</b> <br>
+                        <p style="text-align: center;" class=" rest compDetails">
+                        <b class="compName" style="font-size: 2em;">{{$companyName}}</b> <br>
                         Location: {{$companyAddress}}.<br>
                         Tel: {{$companyContact}}.
                         </p>
@@ -82,9 +101,9 @@
 
                    <div class="col-md-8 modify-col">
                        <p class="rest">
-                           <b>Invoice#: {{ $invoice }}</b><br>
-                           <b>Date: {{ date("d-M-Y") }}</b><br>
-                           <b>Customer: {{ ucwords(strtolower($customer)) }}</b><br>
+                           <b>Receipt No: {{ $invoice }}</b><br>
+                           <b>Date: {{ date("d-M-Y") }} {{date("H:i:s")}}</b><br>
+                           <b>Cashier: {{ ucwords(strtolower(auth()->user()->name)) }}</b><br>
                        </p>
                    </div>
 
@@ -96,48 +115,38 @@
                       <div class="table-responsive">
 
 
-                              @foreach(Cart::all() as $product)
-
-                                  <table class="table">
-
-                                      <style>
-                                          .right{
-                                              text-align: right;
-                                          }
-                                      </style>
-
-                                      <tr>
-                                          <td >Item</td>
-                                          <td class="right"><b>{{ $product->name }}</b></td>
-                                      </tr>
-
-                                      <tr>
-                                          <td>Qty</td>
-                                          <td class="right">{{ $product->qty }}</td>
-                                      </tr>
-
-                                      <tr>
-                                          <td>Price</td>
-                                          <td class="right">{{ number_format($product->price, 2) }}</td>
-                                      </tr>
-
-                                      <tr>
-                                          <td>Discount</td>
-                                          <td class="right">{{ number_format($product->discount, 2) }}</td>
-                                      </tr>
-
-                                      <tr>
-                                          <td>Total</td>
-                                          <td class="text-danger right">{{ number_format($product->amount, 2) }}</td>
-                                      </tr>
-
-                                  </table>
-                                  <hr style="border: 1px solid black;">
-                              @endforeach
 
 
-                      </div>
-                       <br>
+              <table class="table">
+
+                <thead>
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Price</th>
+                    <th>Sub.Total</th>
+                </tr>
+                </thead>
+
+                  <tbody>
+
+                  @foreach(Cart::all() as $product)
+
+                      <tr>
+                          <td>{{ $product->name }}</td>
+                          <td>{{ $product->qty }}</td>
+                          <td>{{ number_format($product->price, 2) }}</td>
+                          <td>{{ number_format($product->amount, 2) }}</td>
+                      </tr>
+
+                  @endforeach
+
+                  </tbody>
+                  </table>
+
+              </div>
+                  <hr>
+
 
                        {{--    Calculate Total Orders   --}}
                        @php
@@ -163,19 +172,18 @@
 
                        @endphp
 
-                       <div>
-                           <span style="font-size: 1.5em;" class="totalInvoice"><b>TOTAL: <span class="text-danger">GH₵ {{ $total_orders }}</span></b></span> <br>
-                           <span class="rest"><b>DISCOUNT: GH₵ {{ $discount }}</b></span> <br>
-                           <span class="rest"><b>CASH TENDERED: GH₵ {{ number_format($tendered , 2)}}</b></span> <br>
-                           <span class="rest" style="font-size: 1.3em;"><b>CHANGE: GH₵ {{ number_format(($tendered - $total), 2) }}</b></span> <br>
+                       <div class="rest">
+                           <span class="totalPrice"><b>TOTAL: <span class="text-danger">GH₵ {{ $total_orders }}</span></b></span> <br>
+                           <span>DISCOUNT: GH₵ {{ $discount }}</span> <br>
+                           <span>CASH TENDERED: GH₵ {{ number_format($tendered , 2)}}</span> <br>
+                           <span class="change">CHANGE: GH₵ {{ number_format(($tendered - $total), 2) }}</span> <br>
                        </div>
                        <br>
 
-                       <div class="text-center developer" >
+                       <div class="text-center developer">
                            Software By<b> Appiah</b> <br>
                            Tel: 0242740320
                        </div>
-                       <br>
 
                    </div>
                </div>

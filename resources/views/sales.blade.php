@@ -99,7 +99,11 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
                         <th>QTY</th>
                         <th>DISC</th>
                         <th>TOTAL</th>
+
+                        @if(auth()->user()->isAdmin())
                         <th>PROFIT</th>
+                        @endif
+
                         <th></th>
                     </tr>
                 </thead>
@@ -136,7 +140,10 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
 
         <td>{{ number_format($product->discount , 2) }}</td>
         <td>{{ number_format($product->amount, 2) }}</td>
+
+        @if(auth()->user()->isAdmin())
         <td>{{ number_format($product->profit, 2) }}</td>
+        @endif
 
         <td>
             {!! Form::open(['method'=>'POST', 'action'=>['CartController@remove', $product->rawId()]]) !!}
@@ -198,13 +205,13 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
                     {!! Form::open(['method'=>'POST', 'action'=>'CartController@pay']) !!}
 
 
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text"><i class="fas fa-user-alt"></i></span>
-                                </div>
-                                {!! Form::text('cust_name', null, ['class'=>'form-control', 'placeholder'=>'Name of Customer', 'autocomplete'=>'off']) !!}
-                            </div>
-                            <br>
+{{--                            <div class="input-group">--}}
+{{--                                <div class="input-group-prepend">--}}
+{{--                                    <span class="input-group-text"><i class="fas fa-user-alt"></i></span>--}}
+{{--                                </div>--}}
+{{--                                {!! Form::text('cust_name', null, ['class'=>'form-control', 'placeholder'=>'Name of Customer', 'autocomplete'=>'off']) !!}--}}
+{{--                            </div>--}}
+
 
                             <div class="input-group">
                                 <div class="input-group-prepend">

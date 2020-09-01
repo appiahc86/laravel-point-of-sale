@@ -92,7 +92,10 @@
                             <th>QTY</th>
                             <th>DISCOUNT</th>
                             <th>TOTAL</th>
+
+                            @if(auth()->user()->isAdmin())
                             <th>PROFIT</th>
+                            @endif
 
                         </tr>
                         </thead>
@@ -117,7 +120,11 @@
                             <td>{{ $order->qty }}</td>
                             <td>{{ number_format($order->discount, 2) }}</td>
                             <td>{{ number_format($order->amount, 2) }}</td>
+
+                            @if(auth()->user()->isAdmin())
                             <td>{{ number_format($order->profit, 2) }}</td>
+                            @endif
+
                         </tr>
                       @php
                         array_push($tot_discount, $order->discount);
@@ -145,7 +152,11 @@
 
         <p style="font-size: 1.4em;">
             <span><b>TOTAL SALES :</b> </span><span class="text-danger"><b>GH₵ {{ number_format($total_amount, 2) }}</b></span><br>
+
+            @if(auth()->user()->isAdmin())
             <span><b>TOTAL PROFIT :</b> </span><span><b>GH₵ {{ number_format($total_profit, 2) }}</b></span><br>
+            @endif
+
             <span><b>TOTAL DISCOUNT :</b> </span><span><b>GH₵ {{ number_format($total_discount, 2) }}</b></span><br>
         </p>
         @endif

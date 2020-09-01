@@ -54,11 +54,13 @@
                             <th>QTY</th>
                             <th>DISCOUNT</th>
                             <th>TOTAL</th>
-                            <th>PROFIT</th>
+
+                            @if(auth()->user()->isAdmin())
+                             <th>PROFIT</th>
+                            @endif
+
                         </tr>
                         </thead>
-
-
                         <tbody>
 
                         @if(!empty($orders))
@@ -79,7 +81,10 @@
                             <td>{{ $order->qty }}</td>
                             <td>{{ number_format($order->discount, 2) }}</td>
                             <td>{{ number_format($order->amount, 2) }}</td>
+
+                            @if(auth()->user()->isAdmin())
                             <td>{{ number_format($order->profit, 2) }}</td>
+                            @endif
 
                         </tr>
 
@@ -108,25 +113,17 @@
                     @endphp
         <p style="font-size: 1.4em;">
             <span><b>TOTAL SALES :</b> </span><span class="text-danger"><b>GH₵ {{ number_format($total_sales, 2) }}</b></span><br>
+
+            @if(auth()->user()->isAdmin())
             <span><b>TOTAL PROFIT :</b> </span><span><b>GH₵ {{ number_format($total_profit, 2) }}</b></span><br>
+            @endif
+
             <span><b>TOTAL DISCOUNT :</b> </span><span><b>GH₵ {{ number_format($total_discount, 2) }}</b></span><br>
         </p>
 
 
         @endif
-{{--        <tr style="background: #2F96B4;">--}}
 
-{{--            @php--}}
-{{--                $total_discount = array_sum($tot_disc);--}}
-{{--                $total_sales = array_sum($tot_sale);--}}
-{{--                 $total_profit = array_sum($tot_profit);--}}
-{{--            @endphp--}}
-
-{{--            <td colspan="7" style="text-align: right"><b>Total: </b></td>--}}
-{{--            <td><b>GH₵ {{ number_format($total_discount, 2) }}</b></td>--}}
-{{--            <td style="color: #110303;"><b>GH₵ {{ number_format($total_sales, 2) }}</b></td>--}}
-{{--            <td><b>GH₵ {{ number_format($total_profit, 2) }}</b></td>--}}
-{{--        </tr>--}}
 
         <br><br>
 
