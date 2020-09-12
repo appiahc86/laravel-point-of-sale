@@ -27,7 +27,7 @@
             @endphp
 
 <div class="container-flex">
-{!! Form::open(['method'=>'POST', 'action'=>'CartController@add', 'class'=>"myForm"]) !!}
+{!! Form::open(['method'=>'POST', 'action'=>'CartController@add', 'onsubmit'=>"document.getElementById('addToCart').disabled=true"]) !!}
     <div class="row">
 
         <div class="col-xl-5 col-lg-12 col-md-12 mb-2">
@@ -72,7 +72,7 @@
 
         <div class="col-xl-1 col-lg-12 col-md-12 mb-2">
 {{--          {!! Form::submit('Add', ['class'=>'btn btn-primary']) !!}--}}
-            <input type="submit" id="addToCart" title="Add To Cart" value="Add" class="btn-primary form-control prev" style="max-width: 100px !important;">
+            <input type="submit" id="addToCart" title="Add To Cart" value="Add" class="btn-primary form-control" style="max-width: 100px !important;">
 
         </div>
 
@@ -202,7 +202,7 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
                             </button>
                         </div>
                         <div class="modal-body">
-                    {!! Form::open(['method'=>'POST', 'action'=>'CartController@pay']) !!}
+                    {!! Form::open(['method'=>'POST', 'action'=>'CartController@pay', 'onsubmit'=>"document.getElementById('paymentBtn').disabled=true"]) !!}
 
 
 {{--                            <div class="input-group">--}}
@@ -223,7 +223,8 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
                         </div>
                         <div class="modal-footer">
 
-                            {!! Form::submit('Proceed', ['class'=>'btn btn-primary', 'onclick'=>"this.style.display='none'"]) !!}
+                            {!! Form::submit('Proceed', ['class'=>'btn btn-primary', 'id'=>'paymentBtn']) !!}
+{{--                            <input type="submit" value="Proceed" class="btn btn-primary" onsubmit="this.style.display='none'">--}}
 
                             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
                         </div>
@@ -254,6 +255,7 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
               decrement.val( +decrement.val() - 1 );
              $(this).parent().parent().submit();
            });
+
 
 
            //INCREMENT

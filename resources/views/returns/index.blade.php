@@ -81,14 +81,14 @@
 
 
 
-    {!! Form::open(['method'=>'POST', 'action'=>'ReturnsController@return']) !!} <!-- Form start here -->
+    {!! Form::open(['method'=>'POST', 'action'=>'ReturnsController@return', 'onsubmit'=>"document.getElementById('returnItem').disabled=true"]) !!} <!-- Form start here -->
 
         <div class="input-group">
             <select name="select" class="custom-select" required>
                 <option value="">Select option</option>
                 <option value="return">Return</option>
             </select>
-            <button type="submit" class="btn btn-danger"><i class="fas fa-trash"></i> Apply</button>
+            <button type="submit" id="returnItem" class="btn btn-danger"><i class="fas fa-trash"></i> Apply</button>
         </div>
 
 
