@@ -18,7 +18,13 @@
             </ol>
             <br><br>
 
-            <a href="/"><button class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> Back</button></a>
+               <span> <a href="/"><button class="btn btn-primary"><i class="fas fa-arrow-circle-left"></i> Back</button></a>
+
+                   @if(Session::has('warning'))
+                   <span class="ml-5 text-danger font-weight-bold" style="font-size: 2.5em;"> &nbsp;{{session('warning')}}!!!</span>
+                   @endif
+
+               </span>
 
             <br><br>
 
@@ -259,7 +265,7 @@ use Overtrue\LaravelShoppingCart\Facade as Cart;
 
 
            //INCREMENT
-            $('.increment').click(function () {
+         $('.increment').click(function () {
                 var increment = $(this).prev();
                 increment.val( +increment.val() + 1 );
                 $(this).parent().parent().submit();
